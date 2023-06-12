@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Intelligent Medication Management System - Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333333;
+        }
+
+        .dashboard-title {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .dashboard-card {
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .dashboard-card-header {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #333333;
+        }
+
+        .dashboard-card-content {
+            font-size: 16px;
+            color: #666666;
+        }
+
+        .dashboard-card-content p {
+            margin: 10px 0;
+        }
+
+        .dashboard-card-content .highlight {
+            color: #ff6600;
+            font-weight: bold;
+        }
+
+        .dashboard-card-footer {
+            text-align: right;
+        }
+
+        .dashboard-card-footer a {
+            color: #ffffff;
+            background-color: #0066ff;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 8px 16px;
+            border-radius: 4px;
+        }
+
+        .dashboard-card-footer a:hover {
+            background-color: #0099ff;
+        }
+
+        .user-name {
+            text-align: right;
+            color: #666666;
+            font-size: 14px;
+            margin-top: -20px;
+            font-weight: bold;
+            font-style: italic;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Welcome to the Intelligent Medication Management System</h1>
+        <div class="user-name" id="userName"></div>
+
+        <div class="dashboard-title">
+            <h2>Dashboard</h2>
+        </div>
+
+        <div class="dashboard-card" style="background-color: #ffe0cc;">
+            <div class="dashboard-card-header" style="color: #ff6600;">Medication Reminders</div>
+            <div class="dashboard-card-content">
+                <p>You have <span class="highlight">3</span> upcoming medication reminders.</p>
+                <p>Stay on track with your medications and never miss a dose.</p>
+            </div>
+            <div class="dashboard-card-footer">
+                <a href="reminder.html">View Reminders</a>
+            </div>
+        </div>
+
+        <div class="dashboard-card" style="background-color: #e0f2ff;">
+            <div class="dashboard-card-header" style="color: #0066ff;">Prescription Refills</div>
+            <div class="dashboard-card-content">
+                <p>You have <span class="highlight">2</span> prescriptions that need to be refilled.</p>
+                <p>Ensure you always have an adequate supply of your medications.</p>
+            </div>
+            <div class="dashboard-card-footer">
+                <a href="Refill.html">Refill Prescriptions</a>
+            </div>
+        </div>
+
+        <div class="dashboard-card" style="background-color: #ccf5ff;">
+            <div class="dashboard-card-header" style="color: #0099ff;">Health Reports</div>
+            <div class="dashboard-card-content">
+                <p>Your latest health report is available.</p>
+                <p>Review your health metrics and track your progress over time.</p>
+            </div>
+            <div class="dashboard-card-footer">
+                <a href="health.html">View Health Report</a>
+            </div>
+        </div>
+        <script>
+
+            var userData = sessionStorage.getItem('userData');
+            var user = userData ? JSON.parse(userData).name : null;
+
+
+            var userNameElement = document.getElementById('userName');
+            userNameElement.textContent = "Logged in as: " + user;
+        </script>
+    </div>
+
+</body>
+
+</html>

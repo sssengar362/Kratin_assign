@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Intelligent Medication Management System - Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333333;
+        }
+
+        .container {
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 4px;
+            border: 1px solid #cccccc;
+        }
+
+        .form-group input[type="submit"] {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: #ffffff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .form-group input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        .signup-link {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .signup-link a {
+            color: #666666;
+            text-decoration: none;
+        }
+
+        .signup-link a:hover {
+            text-decoration: underline;
+        }
+
+        .success-message {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #4CAF50;
+            color: #ffffff;
+            padding: 10px 20px;
+            border-radius: 4px;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        .success-message.show {
+            opacity: 1;
+        }
+    </style>
+    <script>
+        function authenticateUser() {
+            var email = document.getElementById("email").value;
+            var password = document.getElementById("password").value;
+
+
+            var storedData = sessionStorage.getItem("userData");
+
+            if (storedData) {
+                var userData = JSON.parse(storedData);
+                var storedEmail = userData.email;
+                var storedPassword = userData.password;
+
+                if (email === storedEmail && password === storedPassword) {
+                    var successMessage = document.createElement("p");
+                    successMessage.innerText = "Login successful!";
+                    successMessage.classList.add("success-message");
+                    document.body.appendChild(successMessage);
+
+                    setTimeout(function () {
+                        successMessage.classList.remove("show");
+                        setTimeout(function () {
+                            document.body.removeChild(successMessage);
+                            window.location.href = "dashboard.html";
+                        }, 300);
+                    }, 1000);
+
+                    setTimeout(function () {
+                        successMessage.classList.add("show");
+                    }, 100);
+                } else {
+                    alert("Invalid email or password. Please try again.");
+                }
+            } else {
+                alert("User not found. Please sign up first.");
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Intelligent Medication Management System</h1>
+
+
+        <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="text" id="email" name="email" placeholder="Enter your email address" required>
+        </div>
+
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="Enter your password" required>
+        </div>
+
+        <div class="form-group">
+            <input type="submit" value="Login" onclick="authenticateUser()">
+        </div>
+
+
+        <div class="signup-link">
+            Don't have an account? <a href="signup.html">Sign up here</a>
+        </div>
+    </div>
+</body>
+
+</html>
